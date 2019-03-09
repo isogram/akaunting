@@ -8,6 +8,7 @@ use App\Http\Requests\Common\Company as Request;
 use App\Models\Common\Company;
 use App\Models\Setting\Currency;
 use App\Traits\Uploads;
+use App\Utilities\Overrider;
 
 class Companies extends Controller
 {
@@ -60,10 +61,13 @@ class Companies extends Controller
      */
     public function store(Request $request)
     {
-        setting()->forgetAll();
+        $company_id = session('company_id');
 
         // Create company
         $company = Company::create($request->input());
+
+        setting()->forgetAll();
+        setting()->setExtraColumns(['company_id' => $company->id]);
 
         // Create settings
         setting()->set('general.company_name', $request->get('company_name'));
@@ -82,9 +86,13 @@ class Companies extends Controller
 
         setting()->set('general.default_currency', $request->get('default_currency'));
         setting()->set('general.default_locale', session('locale'));
-
-        setting()->setExtraColumns(['company_id' => $company->id]);
         setting()->save();
+
+        setting()->forgetAll();
+
+        session(['company_id' => $company_id]);
+
+        Overrider::load('settings');
 
         // Redirect
         $message = trans('messages.success.added', ['type' => trans_choice('general.companies', 1)]);
@@ -129,6 +137,8 @@ class Companies extends Controller
      */
     public function update(Company $company, Request $request)
     {
+        $company_id = session('company_id');
+
         // Check if user can update company
         if (!$this->isUserCompany($company)) {
             $message = trans('companies.error.not_user_company');
@@ -166,6 +176,12 @@ class Companies extends Controller
 
         setting()->save();
 
+        setting()->forgetAll();
+
+        session(['company_id' => $company_id]);
+
+        Overrider::load('settings');
+
         // Redirect
         $message = trans('messages.success.updated', ['type' => trans_choice('general.companies', 1)]);
 
@@ -191,6 +207,7 @@ class Companies extends Controller
         flash($message)->success();
 
         return redirect()->route('companies.index');
+
     }
 
     /**
@@ -262,6 +279,11 @@ class Companies extends Controller
             session(['company_id' => $company->id]);
 
             event(new CompanySwitched($company));
+        }
+
+        // Check wizard
+        if (!setting('general.wizard', false)) {
+            return redirect('wizard');
         }
 
         return redirect('/');

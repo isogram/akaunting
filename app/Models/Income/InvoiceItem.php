@@ -17,7 +17,7 @@ class InvoiceItem extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'invoice_id', 'item_id', 'name', 'sku', 'quantity', 'price', 'total', 'tax', 'tax_id'];
+    protected $fillable = ['company_id', 'invoice_id', 'item_id', 'name', 'sku', 'quantity', 'price', 'total', 'tax'];
 
     public function invoice()
     {
@@ -29,9 +29,9 @@ class InvoiceItem extends Model
         return $this->belongsTo('App\Models\Common\Item');
     }
 
-    public function tax()
+    public function taxes()
     {
-        return $this->belongsTo('App\Models\Setting\Tax');
+        return $this->hasMany('App\Models\Income\InvoiceItemTax', 'invoice_item_id', 'id');
     }
 
     /**

@@ -11,6 +11,8 @@ return [
     ],
     'localisation' => [
         'tab'               => 'Локализация',
+        'financial_start'   => 'Financial Year Start',
+        'timezone'          => 'Часовой пояс',
         'date' => [
             'format'        => 'Формат даты',
             'separator'     => 'Разделитель даты',
@@ -20,7 +22,6 @@ return [
             'slash'         => 'Слэш (/)',
             'space'         => 'Пробел ( )',
         ],
-        'timezone'          => 'Часовой пояс',
         'percent' => [
             'title'         => 'Percent (%) Position',
             'before'        => 'Before Number',
@@ -33,6 +34,16 @@ return [
         'digit'             => 'Цифрой префикс',
         'next'              => 'Следующий номер',
         'logo'              => 'Логотип',
+        'custom'            => 'Custom',
+        'item_name'         => 'Item Name',
+        'item'              => 'Items',
+        'product'           => 'Products',
+        'service'           => 'Services',
+        'price_name'        => 'Price Name',
+        'price'             => 'Price',
+        'rate'              => 'Rate',
+        'quantity_name'     => 'Quantity Name',
+        'quantity'          => 'Quantity',
     ],
     'default' => [
         'tab'               => 'Умолчания',
@@ -66,6 +77,8 @@ return [
         'bill_days'         => 'Отправить до истечения дней',
         'cron_command'      => 'Cron-команда',
         'schedule_time'     => 'Время выполнения',
+        'send_item_reminder'=> 'Send Item Reminder',
+        'item_stocks'       => 'Send When Item Stock',
     ],
     'appearance' => [
         'tab'               => 'Внешний вид',

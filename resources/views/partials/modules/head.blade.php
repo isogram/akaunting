@@ -60,6 +60,7 @@
     <script src="{{ asset('public/js/app.js?v=' . version('short')) }}"></script>
 
     <script type="text/javascript"><!--
+        var app_url = '{{ url("/") }}';
         var url_search = '{{ url("common/search/search") }}';
     //--></script>
 

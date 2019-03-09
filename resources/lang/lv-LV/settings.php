@@ -11,6 +11,8 @@ return [
     ],
     'localisation' => [
         'tab'               => 'Reģionālie iestatījumi',
+        'financial_start'   => 'Financial Year Start',
+        'timezone'          => 'Laika zona',
         'date' => [
             'format'        => 'Datuma formāts',
             'separator'     => 'Datuma atdalītājs',
@@ -20,7 +22,6 @@ return [
             'slash'         => 'Daļsvītra (/)',
             'space'         => 'Atstarpe ( )',
         ],
-        'timezone'          => 'Laika zona',
         'percent' => [
             'title'         => 'Procentu (%) pozīcija',
             'before'        => 'Pirms skaitļa',
@@ -33,6 +34,16 @@ return [
         'digit'             => 'Rēķina numura garums',
         'next'              => 'Nākamais numurs',
         'logo'              => 'Logo',
+        'custom'            => 'Custom',
+        'item_name'         => 'Item Name',
+        'item'              => 'Items',
+        'product'           => 'Products',
+        'service'           => 'Services',
+        'price_name'        => 'Price Name',
+        'price'             => 'Price',
+        'rate'              => 'Rate',
+        'quantity_name'     => 'Quantity Name',
+        'quantity'          => 'Quantity',
     ],
     'default' => [
         'tab'               => 'Noklusētie iestatījumi',
@@ -66,6 +77,8 @@ return [
         'bill_days'         => 'Sūtīt dienas pirms termiņa',
         'cron_command'      => 'Cron komanda',
         'schedule_time'     => 'Stunda kurā sūtīt',
+        'send_item_reminder'=> 'Send Item Reminder',
+        'item_stocks'       => 'Send When Item Stock',
     ],
     'appearance' => [
         'tab'               => 'Izskats',
